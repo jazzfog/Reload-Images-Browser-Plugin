@@ -1,23 +1,13 @@
-
-function getCurrentTab(callback) {
-
-	var queryInfo = {
-		active: true,
-		currentWindow: true
-	};
-
-	//noinspection JSUnresolvedVariable
-	chrome.tabs.query(queryInfo, function (tabs) {
-		callback(tabs[0]);
-	});
+// Just to suppress IDE error reporting
+if (typeof chrome === 'undefined') {
+	var chrome = {};
 }
 
-chrome.browserAction.onClicked.addListener(function (tab) { //Fired when User Clicks ICON
+chrome.browserAction.onClicked.addListener(function (tab) {
 		
 	var message = {
 		instruction: 'reloadFailedImages'
 	};
 	
-	//noinspection JSUnresolvedVariable
 	chrome.tabs.sendMessage(tab.id, message);
 });
