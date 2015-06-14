@@ -1,0 +1,40 @@
+{
+	"manifest_version": 2,
+	"name": "Images reloader",
+	"description": "This extension allows you to reload images which failed to load just in one click",
+	"version": "0.1",
+	
+	"browser_action": {
+		"name": "Click to reload images",
+		"default_icon": "icon.png"
+	},
+	
+	"permissions": [
+		"activeTab"
+	],
+	
+	"content_scripts": [
+		{
+			"matches": [
+				"http://*/*",
+				"https://*/*"
+			],
+			"js": [
+				"jquery.js",
+				"cs_script.js",
+				"sc_notificator.js"
+			],
+			"css": [
+				"cs_styles.css"
+			]
+		}
+	],
+	
+	"background": {
+		"scripts": ["bg_script.js"]
+	},
+	
+	"web_accessible_resources": [
+		"img/*"
+	]
+}

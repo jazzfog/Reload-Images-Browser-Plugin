@@ -1,0 +1,1 @@
+Plugin for `Google Chrome` and `Opera` which allows you to reload the images that failed to load for some reason.
