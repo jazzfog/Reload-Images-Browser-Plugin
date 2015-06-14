@@ -59,9 +59,5 @@ function reloadImages() {
 	} else {
 		notificator.setIcon('done').show('All done!');
 	}
-	
-	//noinspection SillyAssignmentJS
-	//img.src = img.src; // Should trigger image reload
-	
 }
 
