@@ -70,7 +70,7 @@ function reloadImages() {
 		if (counterLoaded + counterFailed === failedImgArray.length) {
 			
 			if (counterFailed) {
-				notificator.setIcon('warning').show('Loaded: ' + counterLoaded + ', Failed: ' + counterFailed);
+				notificator.setIcon('warning').show('Loaded: ' + counterLoaded + ', Failed: ' + counterFailed + '. Try again.');
 			} else {
 				notificator.setIcon('done').show('All loaded');
 			}
