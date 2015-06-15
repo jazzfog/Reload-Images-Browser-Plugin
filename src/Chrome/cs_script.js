@@ -42,7 +42,7 @@ function reloadImages() {
 	// Get list of failed images
 	$.each(images, function (key, img) {
 		img = $(img);
-		if (!isImageLoaded(img)) {
+		if (img.attr('src') && !isImageLoaded(img)) {
 			failedImgArray.push(img);
 		}
 	});
