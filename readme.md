@@ -1,5 +1,7 @@
 Plugin for `Google Chrome` and `Opera` which allows you to reload the images that failed to load for some reason.
 
+![Image reloader](/img/screen_1.png?raw=true "Image reloader")
+
 **Todo**
 
 - Add loading progress indicator
