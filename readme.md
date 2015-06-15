@@ -1,4 +1,4 @@
-#"Reload Images" plugin
+#"Reload Images" Google Chrome Plugin
 
 Plugin for `Google Chrome` which allows you to reload the images that failed to load for some reason.
 
