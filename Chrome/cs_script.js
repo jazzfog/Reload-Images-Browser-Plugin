@@ -8,6 +8,9 @@ chrome.runtime.onMessage.addListener(
 
 function isImageLoaded(img) {
 
+	// Pull DOM element from jQuery object
+	img = img.get(0);
+	
 	if (!img.complete) {
 		return false;
 	}
@@ -20,44 +23,60 @@ function isImageLoaded(img) {
 	return true;
 }
 
-function getImages() {
-	return document.getElementsByTagName('IMG');
-}
-
 function reloadImages() {
 	
 	notificator.setIcon('loader').show('Loading...', false);
 
-	var images = getImages();
+	var counterLoaded = 0;
+	var counterFailed = 0;
 	
-	var failedCounter = 0;
-	var loadingCounter = 0;
-
-	for (var i = 0; i < images.length; i++) {
-		
-		var img = images[i];
-		
+	var failedImgArray = [];
+	
+	var images = $('IMG');
+	
+	// Get list of failed images
+	$.each(images, function (key, img) {
+		img = $(img);
 		if (!isImageLoaded(img)) {
-			failedCounter++;
-			
-			//noinspection SillyAssignmentJS
-			img.src = img.src; // Should trigger image reload
-			
-			img.addEventListener('load', function () {
-				console.log('LOAD');
-			});
-			img.addEventListener('error', function () {
-				console.log('ERROR');
-			});
-			
+			failedImgArray.push(img);
 		}
+	});
+	
+	// Check for failed images
+	if (!failedImgArray.length) {
+		notificator.setIcon('done').show('Nothing to reload - all loaded');
+		return;
 	}
 	
-	if (failedCounter) {
-		var msg = failedCounter === 1 ? 'Loading 1 image...' : 'Loading ' + failedCounter + ' images...';
-		notificator.show(msg, false);		
-	} else {
-		notificator.setIcon('done').show('All done!');
-	}
+	// Show loading indicator
+	var msg = failedImgArray.length === 1 ? 'Loading 1 image...' : 'Loading ' + failedImgArray.length + ' images...';
+	notificator.show(msg, false);
+	
+	// Trigger images reload
+	$.each(failedImgArray, function (key, img) {
+		img.one('load', onImgComplete);
+		img.one('error', onImgComplete);
+		img.attr('src', img.attr('src'));
+	});
+
+	var onImgComplete = function (event) {
+	
+		// Increase one of the counters - `loaded` or `failed again`
+		if (event.type === 'load') {
+			counterLoaded++;
+		} else if (event.type === 'error') {
+			counterFailed++;
+		}
+		
+		// Check are all of the images processed
+		if (counterLoaded + counterFailed === failedImgArray.length) {
+			
+			if (counterFailed) {
+				notificator.setIcon('warning').show('Finished with errors: Loaded: ' + counterLoaded + ', Failed: ' + counterFailed);
+			} else {
+				notificator.setIcon('done').show('All loaded');
+			}
+		}
+	};
 }
 

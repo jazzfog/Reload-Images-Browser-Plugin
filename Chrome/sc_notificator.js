@@ -5,7 +5,7 @@ var notificator = {
 	
 	opacity: .8,
 	animationTime: 250,
-	closeTimeout: 2000,
+	closeTimeout: 5000,
 	
 	
 	show: function (text, autoHide) {
@@ -38,7 +38,7 @@ var notificator = {
 	
 	setIcon: function (ident) {
 		
-		if (ident !== 'loader' && ident !== 'done') {
+		if (ident !== 'loader' && ident !== 'done' && ident !== 'warning') {
 			console.error('Invalid icon identifier: ' + ident);
 			return;
 		}

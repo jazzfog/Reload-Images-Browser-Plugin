@@ -16,9 +16,9 @@ if (empty($_GET['img'])) {
 	
 	$baseUri = parse_url($_SERVER['REQUEST_URI'])['path'];
 	
-	for ($i = 0 ; $i < 28 ; $i++) {
+	for ($i = 1 ; $i < 29 ; $i++) {
 		$rnd = substr(md5(microtime() . $i), 0, 4);
-		printf('<img src="%s?img=true&rnd=%s" class="emu">', $baseUri, $rnd);
+		printf('<img src="%s?img=true&rnd=%s&index=%s" class="emu">', $baseUri, $rnd, $i);
 	}
 	
 } else {
