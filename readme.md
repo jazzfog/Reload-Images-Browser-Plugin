@@ -1,4 +1,5 @@
-#"Reload Images" Google Chrome Plugin
+#"Reload Images"
+...a `Google Chrome` and `Opera` Plugin
 
 Plugin for `Google Chrome` which allows you to reload the images that failed to load for some reason.
 
@@ -12,4 +13,3 @@ Plugin for `Google Chrome` which allows you to reload the images that failed to 
 - Add loading progress indicator
 - Move information box into iframe, so its style wont be affected by page style
 - Add page context menu with reload options
-- Support Opera
