@@ -26,6 +26,8 @@ if (empty($_GET['img'])) {
 	// Return up to 70% errors
 	if (rand(1, 10) <= 7) {
 		
+		usleep(250000); // 250000 - 1/4 sec
+		
 		header("HTTP/1.0 408 Request Timeout");
 		
 	} else {

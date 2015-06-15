@@ -7,9 +7,14 @@ chrome.runtime.onMessage.addListener(
 );
 
 function isImageLoaded(img) {
-
+	
 	// Pull DOM element from jQuery object
 	img = img.get(0);
+	
+	// Do not check extension images
+	if (img.src.indexOf('chrome-extension://') !== -1) {
+		return true;
+	}
 	
 	if (!img.complete) {
 		return false;
@@ -52,15 +57,8 @@ function reloadImages() {
 	var msg = failedImgArray.length === 1 ? 'Loading 1 image...' : 'Loading ' + failedImgArray.length + ' images...';
 	notificator.show(msg, false);
 	
-	// Trigger images reload
-	$.each(failedImgArray, function (key, img) {
-		img.one('load', onImgComplete);
-		img.one('error', onImgComplete);
-		img.attr('src', img.attr('src'));
-	});
-
 	var onImgComplete = function (event) {
-	
+		
 		// Increase one of the counters - `loaded` or `failed again`
 		if (event.type === 'load') {
 			counterLoaded++;
@@ -72,11 +70,18 @@ function reloadImages() {
 		if (counterLoaded + counterFailed === failedImgArray.length) {
 			
 			if (counterFailed) {
-				notificator.setIcon('warning').show('Finished with errors: Loaded: ' + counterLoaded + ', Failed: ' + counterFailed);
+				notificator.setIcon('warning').show('Loaded: ' + counterLoaded + ', Failed: ' + counterFailed);
 			} else {
 				notificator.setIcon('done').show('All loaded');
 			}
 		}
 	};
+	
+	// Trigger images reload
+	$.each(failedImgArray, function (key, img) {
+		img.one('load', onImgComplete);
+		img.one('error', onImgComplete);
+		img.attr('src', img.attr('src'));
+	});
 }
 

@@ -5,7 +5,7 @@ var notificator = {
 	
 	opacity: .8,
 	animationTime: 250,
-	closeTimeout: 5000,
+	closeTimeout: 3000,
 	
 	
 	show: function (text, autoHide) {
