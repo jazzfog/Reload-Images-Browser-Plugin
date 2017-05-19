@@ -1,4 +1,4 @@
-#"Reload Images"
+# Reload Images
 A `Google Chrome` and `Opera` Plugin
 
 This plugin allows you to reload the images on a webpage, that failed to load for some reason.
