@@ -1,12 +1,11 @@
 # Reload Images
-A `Google Chrome` and `Opera` Plugin
+A `Google Chrome` Plugin
 
-This plugin allows you to reload the images on a webpage, that failed to load for some reason.
+This plugin allows you to reload the images on a webpage that failed to load for some reason.
 
 **Install it for free**
 
-- For Chrome: [from Google Chrome Web Store](https://chrome.google.com/webstore/detail/images-reloader/cfnnfecmcnfcjohnkmaojedpmnjpeoik)
-- For Opera: [from Opera Add-Ons](https://addons.opera.com/en/extensions/details/images-reloader/?display=en)
+- [from Google Chrome Web Store](https://chrome.google.com/webstore/detail/images-reloader/cfnnfecmcnfcjohnkmaojedpmnjpeoik)
 
 ![Image reloader](/img/screen_1.png?raw=true "Image reloader")
 
