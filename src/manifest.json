@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "Images Reloader",
-	"version": "1.1",
+	"version": "1.2",
 	"description": "This extension allows you to reload images which failed to load just in one click",
 	"permissions": ["activeTab", "scripting"],
 	"update_url": "https://clients2.google.com/service/update2/crx",
