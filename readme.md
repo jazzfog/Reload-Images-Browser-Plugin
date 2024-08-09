@@ -9,7 +9,7 @@ This plugin allows you to reload the images on a webpage that failed to load for
 
 ![Image reloader](/img/screen_1.png?raw=true "Image reloader")
 
-**Todo**
+**Todo:**
 
 - Add loading progress indicator
 - Move information box into iframe, so its style wont be affected by page style

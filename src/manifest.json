@@ -23,7 +23,7 @@
 			"css": ["cs_styles.css"],
 			"js": ["jquery.js", "cs_script.js", "sc_notificator.js"],
 			"matches": ["<all_urls>"],
-			"run_at": "document_start" // Run as soon as the document starts loading
+			"run_at": "document_start"
     }
   ],
 	"web_accessible_resources": [
